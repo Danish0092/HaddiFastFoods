@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Poppins, Inter } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -64,8 +66,8 @@ const Menu = () => {
   const ProductCard = () => (
     <div className="bg-neutral-800 relative rounded-md shadow-md">
       <div className="aspect-square rounded-t-md overflow-hidden">
-        <img
-          src="https://static.rancherscafe.com/products/sku/images/thin%2Bcrust.webp"
+        <Image fill
+          src="/banners/thincrust.png"
           alt="Thin Crust Pizza"
           className="w-full h-full object-cover"
           loading="lazy"
@@ -98,7 +100,7 @@ const Menu = () => {
       >
         <div className="flex gap-8 items-center overflow-x-auto scrollbar-hide">
           {links.map((link) => (
-            <a
+            <Link
               id={`link-${link.id}`}
               key={link.id}
               href={`#${link.id}`}
@@ -113,7 +115,7 @@ const Menu = () => {
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
-            </a>
+            </Link>
           ))}
         </div>
       </nav>

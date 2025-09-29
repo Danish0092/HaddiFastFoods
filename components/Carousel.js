@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 import { Pagination } from "swiper/modules";
 import { Autoplay } from "swiper/modules";
@@ -31,7 +32,7 @@ const Carousel = () => {
       >
         {images.map((src, i) => (
           <SwiperSlide key={i}>
-            <img src={src} alt={`banner-${i}`} className="w-full h-full object-cover" />
+            <Image fill src={src} alt={`banner-${i}`} className="w-full h-full object-cover" />
           </SwiperSlide>
         ))}
       </Swiper>
