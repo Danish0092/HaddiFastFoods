@@ -66,7 +66,8 @@ const Menu = () => {
   const ProductCard = () => (
     <div className="bg-neutral-800 relative rounded-md shadow-md">
       <div className="aspect-square rounded-t-md overflow-hidden">
-        <Image fill
+        <Image
+          fill
           src="/banners/thincrust.png"
           alt="Thin Crust Pizza"
           className="w-full h-full object-cover"
@@ -78,8 +79,8 @@ const Menu = () => {
           Thin Crust Pizza
         </p>
         <p className="text-sm text-white font-poppins mt-1 line-clamp-3 sm:line-clamp-2">
-          Crispy Sides Crust: Creamy Sauce, Extra Cheesy, Chicken Tikka,
-          Fajita Mix, Black Olives, Sausages, and Vegetables.
+          Crispy Sides Crust: Creamy Sauce, Extra Cheesy, Chicken Tikka, Fajita
+          Mix, Black Olives, Sausages, and Vegetables.
         </p>
         <p className="sm:text-3xl text-2xl font-poppins font-bold text-yellow-500">
           Rs. 1199
