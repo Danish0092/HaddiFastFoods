@@ -2,9 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Poppins, Inter } from "next/font/google";
-import Image from "next/image";
 import Link from "next/link";
-
+import Image from "next/image";
+import Overlay from "./Overlay";   
+import Item from "./Item";         
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -18,6 +19,7 @@ const inter = Inter({
 const Menu = () => {
   const [active, setActive] = useState("home");
   const navRef = useRef(null);
+  const [selectedProduct, setSelectedProduct] = useState(null); 
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -62,28 +64,29 @@ const Menu = () => {
     }
   }, [active]);
 
-  // Dummy product card component
-  const ProductCard = () => (
-    <div className="bg-neutral-800 relative rounded-md shadow-md">
-      <div className="aspect-square rounded-t-md overflow-hidden">
+  const ProductCard = ({ product }) => (
+    <div
+      className="bg-neutral-800 relative rounded-md shadow-md cursor-pointer"
+      onClick={() => setSelectedProduct(product)} 
+    >
+      <div className="aspect-square rounded-t-md overflow-hidden relative">
         <Image
           fill
-          src="/banners/thincrust.png"
-          alt="Thin Crust Pizza"
-          className="w-full h-full object-cover"
+          src={product.image}
+          alt={product.title}
           loading="lazy"
+          className="object-cover"
         />
       </div>
       <div className="sm:pb-8 pb-5 pt-2 sm:px-4 px-2">
         <p className="text-yellow-500 font-poppins text-lg sm:text-2xl font-bold">
-          Thin Crust Pizza
+          {product.title}
         </p>
         <p className="text-sm text-white font-poppins mt-1 line-clamp-3 sm:line-clamp-2">
-          Crispy Sides Crust: Creamy Sauce, Extra Cheesy, Chicken Tikka, Fajita
-          Mix, Black Olives, Sausages, and Vegetables.
+          {product.description}
         </p>
         <p className="sm:text-3xl text-2xl font-poppins font-bold text-yellow-500">
-          Rs. 1199
+          Rs. {product.price}
         </p>
       </div>
       <button className="absolute left-1/2 flex w-4/5 sm:w-3/4 items-center justify-center font-bold font-poppins -bottom-4 -translate-x-1/2 bg-red-500 text-white hover:text-red-500 hover:bg-white gap-1 px-1 py-2 rounded transition duration-500 hover:outline hover:outline-1 outline-red-500 cursor-pointer">
@@ -94,7 +97,6 @@ const Menu = () => {
 
   return (
     <div>
-      {/* Navbar */}
       <nav
         ref={navRef}
         className="sticky top-20 z-20 flex px-4 sm:px-16 bg-neutral-900 h-20"
@@ -121,7 +123,6 @@ const Menu = () => {
         </div>
       </nav>
 
-      {/* Sections */}
       {links.map((section) => (
         <section
           key={section.id}
@@ -133,13 +134,32 @@ const Menu = () => {
           </span>
 
           <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-3 gap-y-8 sm:gap-6">
-            {/* Render 4 dummy product cards per section */}
-            {[1, 2, 3, 4].map((_, i) => (
-              <ProductCard key={i} />
+            {[1, 2, 3, 4].map((i) => (
+              <ProductCard
+                key={i}
+                product={{
+                  title: `${section.label} Item ${i}`,
+                  description:
+                    "Crispy Sides Crust: Creamy Sauce, Extra Cheesy, Chicken Tikka, Fajita Mix, Black Olives, Sausages, and Vegetables.",
+                  price: 999 + i * 100,
+                  image: "/banners/thincrust.png",
+                }}
+              />
             ))}
           </div>
         </section>
       ))}
+
+      <Overlay
+        isOpen={!!selectedProduct}
+        onClick={() => setSelectedProduct(null)}
+      />
+      {selectedProduct && (
+        <Item
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </div>
   );
 };
