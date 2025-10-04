@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "./Cart";
-import Sidebar from "./Sidebar"; 
+import Sidebar from "./Sidebar";
 
 const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
@@ -17,7 +17,6 @@ const Navbar = () => {
             onClick={() => setSidebar(true)}
             className="ri-menu-line font-bold cursor-pointer"
           ></i>
-
           <Image
             width={100}
             height={100}
@@ -26,8 +25,28 @@ const Navbar = () => {
             loading="lazy"
             className="object-cover"
           />
+          <div className="hidden md:flex items-center gap-8">
+            <Link
+              href="/"
+              className="font-bold text-neutral-300 hover:text-white transition-colors"
+            >
+              Home
+            </Link>
 
+            <Link
+              href="/our-story"
+              className="font-bold text-neutral-300 hover:text-white transition-colors"
+            >
+              Our Story
+            </Link>
 
+            <Link
+              href="/about"
+              className="font-bold text-neutral-300 hover:text-white transition-colors"
+            >
+              About Us
+            </Link>
+          </div>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-6">

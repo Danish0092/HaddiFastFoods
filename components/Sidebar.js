@@ -23,17 +23,17 @@ const Sidebar = ({ show, setShow }) => {
           ></i>
         </div>
         <div className="flex flex-col gap-3 mt-4">
-          <button className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3">
+          <button className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3 hover:bg-yellow-400">
             Store Location
           </button>
-          <button className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3">
+          <button className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3 hover:bg-yellow-400">
             Explore Menu
           </button>
 
           <Link href="/login">
             <button
-              className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3"
-              onClick={() => setShow(false)} // ✅ Close sidebar when navigating
+              className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3 hover:bg-yellow-400"
+              onClick={() => setShow(false)}
             >
               Login
             </button>
