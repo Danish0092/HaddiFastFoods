@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Sidebar = ({ show, setShow }) => {
   return (
@@ -28,9 +29,15 @@ const Sidebar = ({ show, setShow }) => {
           <button className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3">
             Explore Menu
           </button>
-          <button className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3">
-            Login
-          </button>
+
+          <Link href="/login">
+            <button
+              className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3"
+              onClick={() => setShow(false)} // ✅ Close sidebar when navigating
+            >
+              Login
+            </button>
+          </Link>
         </div>
         <div className="mt-auto">
           <hr className="bg-neutral-800 h-0.5" />
