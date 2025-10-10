@@ -16,7 +16,7 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-const page = () => {
+const Page = () => {
   const [showCodeVerifier, setShowCodeVerifier] = useState(false);
   return (
     <div className="bg-neutral-900 font-poppins text-white min-h-screen flex items-center justify-center p-4">
@@ -75,4 +75,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
