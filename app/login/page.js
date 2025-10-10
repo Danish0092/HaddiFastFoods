@@ -1,7 +1,10 @@
+'use client'
 import React from "react";
 import { Poppins, Inter } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
+import CodeVerification from "@/components/CodeVerification";
+import { useState } from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,6 +17,7 @@ const inter = Inter({
 });
 
 const page = () => {
+  const [showCodeVerifier, setShowCodeVerifier] = useState(false);
   return (
     <div className="bg-neutral-900 font-poppins text-white min-h-screen flex items-center justify-center p-4">
       <div className="flex flex-col md:flex-row w-full md:w-2/3 relative bg-neutral-800 rounded-md overflow-hidden">
@@ -50,7 +54,9 @@ const page = () => {
             </div>
           </div>
 
-          <button className="flex w-full items-center justify-center font-medium rounded-sm bg-red-500 text-white gap-4 px-4 py-3 cursor-pointer">
+          <button className="flex w-full items-center justify-center font-medium rounded-sm bg-red-500 text-white gap-4 px-4 py-3 cursor-pointer"
+          onClick={() => setShowCodeVerifier(true)}
+          >
             <i className="ri-phone-fill"></i>
             <span className="text-sm">LOGIN WITH PHONE</span>
           </button>
@@ -63,6 +69,8 @@ const page = () => {
           </Link>
         </div>
       </div>
+
+      <CodeVerification show={showCodeVerifier} setShow={setShowCodeVerifier} />
     </div>
   );
 };
