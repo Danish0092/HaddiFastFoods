@@ -25,28 +25,28 @@ const Navbar = () => {
             loading="lazy"
             className="object-cover"
           />
-          <div className="hidden md:flex items-center gap-8">
-            <Link
-              href="/"
-              className="font-bold text-neutral-300 hover:text-white transition-colors"
-            >
-              Home
-            </Link>
+            {/* <div className="hidden md:flex items-center gap-8">
+              <Link
+                href="/"
+                className="font-bold text-neutral-300 hover:text-white transition-colors"
+              >
+                Home
+              </Link>
 
-            <Link
-              href="/our-story"
-              className="font-bold text-neutral-300 hover:text-white transition-colors"
-            >
-              Our Story
-            </Link>
+              <Link
+                href="/our-story"
+                className="font-bold text-neutral-300 hover:text-white transition-colors"
+              >
+                Our Story
+              </Link>
 
-            <Link
-              href="/about"
-              className="font-bold text-neutral-300 hover:text-white transition-colors"
-            >
-              About Us
-            </Link>
-          </div>
+              <Link
+                href="/about"
+                className="font-bold text-neutral-300 hover:text-white transition-colors"
+              >
+                About Us
+              </Link>
+            </div> */}
         </div>
 
         <div className="flex items-center gap-2 sm:gap-6">

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import 'remixicon/fonts/remixicon.css';
 import Navbar from "@/components/Navbar";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 
 const geistSans = Geist({
@@ -26,8 +27,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar/>
+        <Navbar />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

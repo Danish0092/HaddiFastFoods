@@ -99,7 +99,7 @@ const Menu = () => {
     <div>
       <nav
         ref={navRef}
-        className="sticky top-20 z-20 flex px-4 sm:px-16 bg-neutral-900 h-20"
+        className="sticky top-20 z-10 flex px-4 sm:px-16 bg-neutral-900 h-20"
       >
         <div className="flex gap-8 items-center overflow-x-auto scrollbar-hide">
           {links.map((link) => (
