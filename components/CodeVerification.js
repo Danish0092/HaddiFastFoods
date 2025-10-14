@@ -1,11 +1,13 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import CustomToaster, { showToast } from "@/components/CustomToaster";
 
 export default function CodeVerification({ show, setShow }) {
     const [otp, setOtp] = useState(new Array(4).fill(""));
     const inputRefs = useRef([]);
     const [timer, setTimer] = useState(59);
+    const router = useRouter();
 
     useEffect(() => {
         if (timer > 0) {
@@ -28,16 +30,20 @@ export default function CodeVerification({ show, setShow }) {
     const handleVerify = () => {
         const entered = otp.join("");
         if (entered === "1234") {
-            toast.success("Number verified successfully!");
+            showToast("success", "Email verified successfully!");
+            setTimeout(() => {
+                router.push("/"); 
+                setShow(false);
+            }, 1500);
         } else {
-            toast.error("Invalid code. Please try again!");
+            showToast("error", "Invalid code. Please try again!");
         }
     };
 
     const handleResend = () => {
         setOtp(new Array(4).fill(""));
         setTimer(60);
-        toast("Code resent!");
+        showToast("success", "Code resent!");
     };
 
     return (
@@ -47,15 +53,15 @@ export default function CodeVerification({ show, setShow }) {
       ${show ? "opacity-100" : "opacity-0 pointer-events-none"}`}
             onClick={() => setShow(false)}
         >
-            <Toaster position="top-center" />
+            <CustomToaster />
 
             <div
                 onClick={(e) => e.stopPropagation()}
-                className={`bg-neutral-900 border border-gray-700 rounded-2xl shadow-xl p-8 w-full max-w-sm text-center relative 
+                className={`bg-neutral border border-gray-700 rounded-2xl shadow-xl p-8 w-full max-w-sm text-center relative 
         transform transition-all duration-300 ease-out
         ${show ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-4 opacity-0"}`}
             >
-                <h1 className="text-white font-bold text-lg">Phone Verify OTP</h1>
+                <h1 className="text-white font-bold text-lg">Email Verify OTP</h1>
 
                 <button
                     onClick={() => setShow(false)}
@@ -65,8 +71,8 @@ export default function CodeVerification({ show, setShow }) {
                 </button>
 
                 <p className="text-white text-sm mb-6">
-                    Please enter the OTP sent to your mobile number <br />
-                    <span className="font-semibold">+923444767909</span>
+                    Please enter the OTP sent to your email <br />
+                    <span className="font-semibold text-yellow">usmanjamil@gmail.com</span>
                 </p>
 
                 <div className="flex justify-center gap-4 mb-6">
@@ -91,7 +97,7 @@ export default function CodeVerification({ show, setShow }) {
                 </div>
 
                 <div className="text-gray-300 text-sm mb-6">
-                    Didnot receive OTP?{" "}
+                    Didn’t receive OTP?{" "}
                     <button
                         onClick={handleResend}
                         className="text-red-500 font-medium hover:underline"
@@ -109,5 +115,4 @@ export default function CodeVerification({ show, setShow }) {
             </div>
         </div>
     );
-
 }

@@ -25,32 +25,32 @@ const Navbar = () => {
             loading="lazy"
             className="object-cover"
           />
-            {/* <div className="hidden md:flex items-center gap-8">
-              <Link
-                href="/"
-                className="font-bold text-neutral-300 hover:text-white transition-colors"
-              >
-                Home
-              </Link>
+          {/* <div className="hidden md:flex items-center gap-8">
+            <Link
+              href="/"
+              className="font-bold text-neutral-300 hover:text-white transition-colors"
+            >
+              Home
+            </Link>
 
-              <Link
-                href="/our-story"
-                className="font-bold text-neutral-300 hover:text-white transition-colors"
-              >
-                Our Story
-              </Link>
+            <Link
+              href="/our-story"
+              className="font-bold text-neutral-300 hover:text-white transition-colors"
+            >
+              Our Story
+            </Link>
 
-              <Link
-                href="/about"
-                className="font-bold text-neutral-300 hover:text-white transition-colors"
-              >
-                About Us
-              </Link>
-            </div> */}
+            <Link
+              href="/about"
+              className="font-bold text-neutral-300 hover:text-white transition-colors"
+            >
+              About Us
+            </Link>
+          </div> */}
         </div>
 
         <div className="flex items-center gap-2 sm:gap-6">
-          <Link href="/login">
+          <Link href="/signup">
             <button className="bg-neutral-800 rounded-sm py-1 sm:py-2.5 px-2 sm:px-5 cursor-pointer flex items-center gap-2">
               <i className="ri-account-circle-line"></i>
             </button>
