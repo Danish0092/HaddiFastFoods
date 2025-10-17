@@ -38,7 +38,7 @@ const Login = ({ toggleForm, show }) => {
                     rounded-b-[120px] md:rounded-l-none md:rounded-r-[120px] text-center">
 
                     <h2 className="text-3xl font-bold">Hello Welcome!</h2>
-                    <p>Don't have an account?</p>
+                    <p>Dont have an account?</p>
 
                     <button
                         onClick={toggleForm}

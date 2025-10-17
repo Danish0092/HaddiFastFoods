@@ -108,7 +108,7 @@ export default function CodeVerification({ show, setShow }) {
                     </div>
 
                     <div className="text-sm">
-                        Didn't receive OTP? 
+                        Didnt receive OTP? 
                         <button
                             onClick={handleResend}
                             className="text-red font-medium hover:underline">
