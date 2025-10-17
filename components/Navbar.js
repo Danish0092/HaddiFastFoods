@@ -11,57 +11,42 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex h-20 fixed w-full z-30 top-0 items-center justify-between text-white text-xl sm:text-2xl bg-neutral-900 px-2.5 sm:px-5">
+      <nav className="fixed top-0 z-30 flex items-center justify-between 
+      w-full h-20 text-xl sm:text-2xl bg-neutral px-2.5 sm:px-5">
+
         <div className="flex items-center gap-2 sm:gap-6">
           <i
             onClick={() => setSidebar(true)}
             className="ri-menu-line font-bold cursor-pointer"
           ></i>
-          <Image
-            width={100}
-            height={100}
-            alt="logo"
-            src="/banners/logo.png"
-            loading="lazy"
-            className="object-cover"
-          />
-          {/* <div className="hidden md:flex items-center gap-8">
-            <Link
-              href="/"
-              className="font-bold text-neutral-300 hover:text-white transition-colors"
-            >
-              Home
-            </Link>
 
-            <Link
-              href="/our-story"
-              className="font-bold text-neutral-300 hover:text-white transition-colors"
-            >
-              Our Story
-            </Link>
-
-            <Link
-              href="/about"
-              className="font-bold text-neutral-300 hover:text-white transition-colors"
-            >
-              About Us
-            </Link>
-          </div> */}
+          <Link href={'/'}>
+            <Image
+              width={100}
+              height={100}
+              alt="logo"
+              src="/banners/logo.png"
+              loading="lazy"
+              className="object-cover"
+            />
+          </Link>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-6">
-          <Link href="/signup">
-            <button className="bg-neutral-800 rounded-sm py-1 sm:py-2.5 px-2 sm:px-5 cursor-pointer flex items-center gap-2">
+          <Link href="/login">
+            <button className=" flex items-center gap-2 bg-gray rounded-sm 
+            py-1 sm:py-2.5 px-2 sm:px-5 cursor-pointer">
               <i className="ri-account-circle-line"></i>
             </button>
           </Link>
 
           <button
             onClick={() => setShowCart(true)}
-            className="relative bg-neutral-800 rounded-sm py-1 sm:py-2.5 px-2 sm:px-5 cursor-pointer"
-          >
+            className="relative bg-gray rounded-sm py-1 sm:py-2.5 px-2 sm:px-5 cursor-pointer">
             <i className="ri-shopping-bag-line"></i>
-            <span className="absolute flex items-center justify-center -top-1 sm:top-1 -right-1 sm:right-1 bg-red-500 text-sm w-4 sm:w-5 h-4 sm:h-5 rounded-full">
+            <span className="absolute flex items-center justify-center 
+            -top-1 sm:top-1 -right-1 sm:right-1 bg-red 
+            text-sm w-4 sm:w-5 h-4 sm:h-5 rounded-full">
               1
             </span>
           </button>

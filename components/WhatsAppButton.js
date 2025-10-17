@@ -11,10 +11,10 @@ export default function WhatsAppButton() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed z-20 bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-5 rounded-full shadow-lg flex items-center gap-2 transition-all"
-        >
-            <i className="ri-whatsapp-line text-2xl text-white"></i>
-            Chat on WhatsApp
+            className="fixed z-20 bottom-5 right-5 flex items-center justify-center 
+            w-11 h-11 bg-green rounded-full ">
+
+            <i className="ri-whatsapp-line text-3xl"></i>
         </Link>
     );
 }

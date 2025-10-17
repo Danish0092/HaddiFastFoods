@@ -3,80 +3,96 @@ import React, { useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 const TOAST_TYPES = {
-    success: {
-        progress: "bg-green-500",
-        icon: <i className="ri-verified-badge-fill text-2xl text-green-500"></i>,
-    },
-    error: {
-        progress: "bg-red-500",
-        icon: <i className="ri-close-circle-fill text-2xl text-red-500"></i>,
-    },
+  success: {
+    progress: "bg-green",
+    icon: <i className="ri-verified-badge-fill text-2xl text-green"></i>,
+  },
+  error: {
+    progress: "bg-red",
+    icon: <i className="ri-close-circle-fill text-2xl text-red"></i>,
+  },
 };
 
 export const showToast = (type, message) => {
-    const toastType = TOAST_TYPES[type] || TOAST_TYPES.success;
+  const toastType = TOAST_TYPES[type] || TOAST_TYPES.success;
 
-    toast.custom(
-        (t) => (
-            <div
-                onClick={() => toast.dismiss(t.id)}
-                className={`relative  cursor-pointer 
-          rounded-lg p-4  text-gray-800 shadow-lg 
-          bg-white flex items-center gap-3 transition-all duration-300 overflow-hidden
+  toast.custom(
+    (t) => (
+      <div
+        onClick={() => toast.dismiss(t.id)}
+
+        className={`relative flex items-center justify-center gap-4
+          bg-white rounded-lg text-gray text-center h-16 w-xs px-4 
+           transition-all duration-300 cursor-pointer overflow-hidden
+
           ${t.visible ? "animate-toast-in" : "animate-toast-out"} 
-          ${toastType.border}`}
-            >
-                <div>{toastType.icon}</div>
-                <p className="font-medium text-sm sm:text-base">{message}</p>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-100 overflow-hidden ">
-                    <div
-                        className={`h-full ${toastType.progress} animate-progress`}
-                    ></div>
-                </div>
-            </div>
-        ),
-        {
-            duration: 3000,
-        }
-    );
+          ${toastType.border}`} >
+
+        <div>{toastType.icon}</div>
+        <p className=" text-sm font-medium">{message}</p>
+
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-100 overflow-hidden ">
+          <div className={`h-full ${toastType.progress} animate-progress`} ></div>
+        </div>
+
+      </div>
+    ),
+    {
+      duration: 3000,
+    }
+  );
 };
 
 const CustomToaster = () => {
-    useEffect(() => { }, []);
 
-    return (
-        <>
-            <Toaster position="top-center" reverseOrder={false} />
-            <style jsx global>{`
+  return (
+    <>
+      <Toaster position="top-center" reverseOrder={false}
+        containerStyle={{
+          top: 8,
+        }}
+      />
+      <style jsx global>{`
+
         @keyframes toast-in {
           0% {
             opacity: 0;
-            transform: translateY(-15px) scale(0.95);
+            transform: translateX(50px) scale(0.95);
           }
-          60% {
+          40% {
             opacity: 1;
-            transform: translateY(0px) scale(1.02);
+            transform: translateX(0px) scale(1.02);
+          }
+          55% {
+            transform: translateX(-6px);
+          }
+          70% {
+            transform: translateX(4px);
+          }
+          85% {
+            transform: translateX(-2px);
           }
           100% {
-            opacity: 1;
-            transform: scale(1);
+            transform: translateX(0) scale(1);
           }
         }
+
         @keyframes toast-out {
           0% {
             opacity: 1;
-            transform: scale(1);
+            transform: translateX(0);
           }
           100% {
             opacity: 0;
-            transform: translateY(-10px) scale(0.9);
+            transform: translateX(60px) scale(0.95);
           }
         }
+
         .animate-toast-in {
-          animation: toast-in 0.4s ease-out forwards;
+          animation: toast-in 0.5s ease-out forwards;
         }
         .animate-toast-out {
-          animation: toast-out 0.25s ease-in forwards;
+          animation: toast-out 0.3s ease-in forwards;
         }
 
         @keyframes progress {
@@ -91,8 +107,8 @@ const CustomToaster = () => {
           animation: progress 3s linear forwards;
         }
       `}</style>
-        </>
-    );
+    </>
+  );
 };
 
 export default CustomToaster;

@@ -6,41 +6,71 @@ import Link from "next/link";
 const Sidebar = ({ show, setShow }) => {
   return (
     <div
-      className={`fixed inset-0 bg-black/40 z-40 transition-opacity duration-300 ${
-        show ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
-      onClick={() => setShow(false)}
-    >
-      <div
-        className={`bg-neutral-900 w-11/12 sm:w-1/3 h-full p-2.5 flex flex-col justify-between fixed left-0 top-0 transform transition-transform duration-300
-        ${show ? "-translate-x-0" : "-translate-x-full"}`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between">
-          <i
-            className="ri-close-line text-white text-3xl cursor-pointer"
-            onClick={() => setShow(false)}
-          ></i>
-        </div>
-        <div className="flex flex-col gap-3 mt-4">
-          <button className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3 hover:bg-yellow-400">
-            Store Location
-          </button>
-          <button className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3 hover:bg-yellow-400">
-            Explore Menu
-          </button>
+      className={`fixed z-40 inset-0 bg-black/40 
+      transition-opacity duration-300  
+      ${show ? "opacity-100" : "opacity-0 pointer-events-none"}`} >
 
-          <Link href="/login">
-            <button
-              className="bg-yellow-500 w-full font-bold text-lg rounded-sm p-3 hover:bg-yellow-400"
-              onClick={() => setShow(false)}
-            >
-              Login
-            </button>
-          </Link>
+      <div
+        className={`fixed left-0 top-0 
+        flex flex-col gap-4 w-3/4 sm:w-1/4 h-full py-6 px-3
+       bg-neutral transform transition-transform duration-300
+        ${show ? "-translate-x-0" : "-translate-x-full"}`}>
+
+        <i
+          className="ri-arrow-left-s-line absolute top-7 right-4
+          text-yellow text-4xl cursor-pointer"
+          onClick={() => setShow(false)}
+        ></i>
+
+
+        <div className="flex items-center gap-4">
+          <Image
+            src="/profile.png"
+            alt="Profile png"
+            width={50}
+            height={50}
+            className="rounded-full"
+          />
+
+          <span className="text-xl font-medium">Usman Jamil</span>
         </div>
-        <div className="mt-auto">
-          <hr className="bg-neutral-800 h-0.5" />
+
+        <span className="bg-gray h-0.5 my-2 mb-10"></span>
+
+
+        <div className="flex flex-col gap-3 mt-2">
+
+          <Link href={'/store-location'}
+            className="flex items-center gap-2 p-3 w-full
+            hover:bg-gray text-lg rounded-sm cursor-pointer
+             transition-all duration-300 hover:-translate-y-1" >
+            <span className="flex items-center justify-center bg-red px-2 py-1 rounded-xs">
+              <i className="ri-map-pin-2-line"></i>
+            </span>
+            Store Location
+          </Link>
+
+
+          <Link href={'/explore-menu'}
+            className="flex items-center gap-2 p-3 w-full
+            hover:bg-gray text-lg rounded-sm cursor-pointer
+             transition-all duration-300 hover:-translate-y-1" >
+            <span className="flex items-center justify-center bg-red px-2 py-1 rounded-xs">
+              <i className="ri-restaurant-2-line"></i>
+            </span>
+            Explore Menu
+          </Link>
+
+
+          <button onClick={() => setShow(false)}
+            className="flex items-center gap-2 p-3 w-full
+            hover:bg-gray text-lg rounded-sm cursor-pointer
+             transition-all duration-300 hover:-translate-y-1" >
+            <span className="flex items-center justify-center bg-red px-2 py-1 rounded-xs">
+              <i className="ri-logout-circle-r-line"></i>
+            </span>
+            Logout
+          </button>
         </div>
       </div>
     </div>

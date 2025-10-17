@@ -5,12 +5,12 @@ const Footer = () => {
 
 
 
-        <footer className="text-white bg-neutral-800 p-6">
+        <footer className="text-white bg-gray p-6">
             <div className="grid grid-col-1 sm:grid-cols-3 gap-4">
 
 
                 <div className="flex flex-col items-center justify-center">
-                    <h2 className="font-baloo text-[#bb4b1b] font-black text-4xl">Haddi
+                    <h2 className="font-baloo text-yellow font-black text-4xl">Haddi
                         <span className="text-white"> Fast Foods</span>
                     </h2>
 
@@ -31,47 +31,34 @@ const Footer = () => {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                    <span className="font-poppins font-bold text-xl">Quick Links</span>
-                    <a href="" className="font-baloo hover:text-[#bb4b1b] text-lg">Home</a>
-                    <a href="" className="font-baloo hover:text-[#bb4b1b] text-lg">About</a>
-                    <a href="" className="font-baloo hover:text-[#bb4b1b] text-lg">Contact</a>
+                    <span className="font-bold text-xl">Quick Links</span>
+                    <a href="" className="text-lg hover:underline hover:text-yellow">Home</a>
+                    <a href="" className="text-lg hover:underline hover:text-yellow">Store Locator</a>
                 </div>
 
                 <div className="flex flex-col items-center justify-center text-xl">
-                    <span className="font-poppins font-bold text-xl">Contact Info</span>
-                    <a className="flex gap-2" href="">
+                    <span className="font-bold text-xl">Contact Info</span>
+                    <div className="flex gap-2">
                         <i className="ri-map-pin-2-line text-xl"></i>
-                        <span className="font-baloo hover:text-[#bb4b1b] text-lg text-center w-40">Branch Johar Town,
-                            Lahore, 54000</span>
-                    </a>
+                        <span className="font-baloo hover:text-yellow text-lg text-center w-40">Defence Road LDA Ave</span>
+                    </div>
 
-                    <a className="flex gap-2 items-center justify-center" href="">
-                        <i className="ri-mail-line text-xl"></i>
-                        <span className="font-baloo hover:text-[#bb4b1b] text-lg">info@cafedemax.com</span>
-                    </a>
 
-                    <a className="flex gap-2 items-center justify-center" href="">
+
+                    <div className="flex gap-2 items-center justify-center">
                         <i className="ri-phone-line text-xl"></i>
-                        <span className="font-baloo hover:text-[#bb4b1b] text-lg">+92 3498789189</span>
-                    </a>
+                        <span className="font-baloo hover:text-yellow text-lg">+923 259726009</span>
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <div className="bg-[#f9c311] h-[1px] my-3 w-full"></div>
+            <div className="bg-neutral h-0.5 my-3 w-full"></div>
 
-            <div className="font-baloo m-auto text-center">© 2025 Haddi Fast Foods ~ By Team. All rights reserved.</div>
-
-
-
-
+            <div className="m-auto text-center">© 2025 Haddi Fast Foods ~ By Team. All rights reserved.</div>
         </footer >
-
-
-
-
     )
 }
 
