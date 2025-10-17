@@ -83,9 +83,9 @@ export default function CheckoutPage() {
                                 <span>Rs 150</span>
                             </div>
 
-                            <div className="flex justify-between text-lg font-semibold text-gray-800 border-t pt-3">
-                                <span>Total</span>
-                                <span className="text-yellow-600">Rs 1497</span>
+                            <div className="flex  justify-between text-lg font-semibold text-gray-800 border-t pt-3">
+                                <span className="text-yellow-600">Total</span>
+                                <span className="text-yellow-600">Rs 1397</span>
                             </div>
                         </div>
                     </div>

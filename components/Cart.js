@@ -99,7 +99,7 @@
           </div>
 
           <Link href={'/checkout'} onClick={() => setShow(false)}
-          className="bg-yellow w-full font-bold text-lg text-centzer rounded-sm p-3">
+          className="bg-yellow w-full font-bold text-lg text-center rounded-sm p-3">
             Proceed To Checkout
           </Link>
         </div>

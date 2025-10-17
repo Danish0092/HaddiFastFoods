@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const Footer = () => {
     return (
@@ -32,8 +33,8 @@ const Footer = () => {
 
                 <div className="flex flex-col items-center justify-center">
                     <span className="font-bold text-xl">Quick Links</span>
-                    <a href="" className="text-lg hover:underline hover:text-yellow">Home</a>
-                    <a href="" className="text-lg hover:underline hover:text-yellow">Store Locator</a>
+                    <Link href="/" className="text-lg hover:underline hover:text-yellow">Home</Link>
+                    <Link href="/store-locator" className="text-lg hover:underline hover:text-yellow">Store Locator</Link>
                 </div>
 
                 <div className="flex flex-col items-center justify-center text-xl">

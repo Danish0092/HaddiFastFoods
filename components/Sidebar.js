@@ -49,8 +49,8 @@ const Sidebar = ({ show, setShow }) => {
             Store Location
           </Link>
 
-          <Link
-            href={"/explore-menu"}
+          <Link onClick={() => setShow(false)}
+            href={"/#deals"}
             className="flex items-center gap-2 p-3 w-full
             hover:bg-gray text-lg rounded-sm cursor-pointer
              transition-all duration-300 hover:-translate-y-1"
@@ -61,7 +61,8 @@ const Sidebar = ({ show, setShow }) => {
             Explore Menu
           </Link>
 
-          <button
+          <Link
+            href={'/'}
             onClick={() => setShow(false)}
             className="flex items-center gap-2 p-3 w-full
             hover:bg-gray text-lg rounded-sm cursor-pointer
@@ -71,7 +72,7 @@ const Sidebar = ({ show, setShow }) => {
               <i className="ri-logout-circle-r-line"></i>
             </span>
             Logout
-          </button>
+          </Link>
         </div>
       </div>
     </div>
