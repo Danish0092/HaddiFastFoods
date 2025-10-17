@@ -81,7 +81,7 @@ export default function CodeVerification({ show, setShow }) {
 
 
                     <p className="text-sm">
-                        Please enter the OTP sent to your email &nbsp;
+                        Please enter the OTP sent to your email 
                         <span className="text-yellow font-semibold ">usmanjamil@gmail.com</span>
                     </p>
 
@@ -108,7 +108,7 @@ export default function CodeVerification({ show, setShow }) {
                     </div>
 
                     <div className="text-sm">
-                        Didn't receive OTP? &nbsp;
+                        Didn't receive OTP? 
                         <button
                             onClick={handleResend}
                             className="text-red font-medium hover:underline">
