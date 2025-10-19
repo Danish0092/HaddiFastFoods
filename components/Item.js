@@ -20,7 +20,7 @@ export default function Item({ product, onClose }) {
       >
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-yellow-500 text-2xl sm:text-3xl hover:text-red-500 focus:outline-none"
+          className="absolute z-50 top-0.5 right-0.5 text-yellow-500 text-2xl sm:text-3xl hover:text-red-500 focus:outline-none"
           aria-label="Close"
         >
           ×
@@ -52,7 +52,7 @@ export default function Item({ product, onClose }) {
               Rs. {product.price}
             </p>
 
-              <legend className="sr-only">Choose a drink</legend>
+            <legend className="sr-only">Choose a drink</legend>
             <fieldset className="mt-6">
               <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                 {drinks.map((d) => {
@@ -83,7 +83,9 @@ export default function Item({ product, onClose }) {
                         onChange={() => setDrink(d)}
                         className="sr-only"
                       />
-                      <span className="text-base sm:text-lg text-neutral-200">{d}</span>
+                      <span className="text-base sm:text-lg text-neutral-200">
+                        {d}
+                      </span>
                     </label>
                   );
                 })}
@@ -91,7 +93,9 @@ export default function Item({ product, onClose }) {
             </fieldset>
 
             <div className="mt-6 sm:mt-8">
-              <p className="text-lg sm:text-xl font-extrabold text-neutral-200">Quantity</p>
+              <p className="text-lg sm:text-xl font-extrabold text-neutral-200">
+                Quantity
+              </p>
 
               <div className="mt-3 flex items-center gap-3">
                 <button

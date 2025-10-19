@@ -20,7 +20,6 @@ const images = [
 const Carousel = () => {
   return (
     <div className="bg-neutral-900 mt-10 py-2 sm:py-10 sm:h-[90vh]">
-
       <Swiper
         modules={[Pagination, Autoplay]}
         spaceBetween={0}
@@ -32,7 +31,12 @@ const Carousel = () => {
       >
         {images.map((src, i) => (
           <SwiperSlide key={i}>
-            <Image fill src={src} alt={`banner-${i}`} className="w-full h-full object-cover" />
+            <Image
+              fill
+              src={src}
+              alt={`banner-${i}`}
+              className="w-full h-full object-cover"
+            />
           </SwiperSlide>
         ))}
       </Swiper>
