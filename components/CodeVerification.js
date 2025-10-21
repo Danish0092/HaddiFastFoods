@@ -4,9 +4,10 @@ import { useRouter } from "next/navigation";
 import CustomToaster, { showToast } from "@/components/CustomToaster";
 
 export default function CodeVerification({ show, setShow }) {
+    
     const [otp, setOtp] = useState(new Array(4).fill(""));
     const inputRefs = useRef([]);
-    const [timer, setTimer] = useState(59);
+    const [timer, setTimer] = useState(60);
     const router = useRouter();
 
     useEffect(() => {
@@ -17,7 +18,6 @@ export default function CodeVerification({ show, setShow }) {
     }, [timer]);
 
     const handleChange = (value, index) => {
-        if (!/^[0-9]?$/.test(value)) return;
         const newOtp = [...otp];
         newOtp[index] = value;
         setOtp(newOtp);
@@ -49,23 +49,18 @@ export default function CodeVerification({ show, setShow }) {
     return (
         <>
             <CustomToaster />
-
-
             <div
                 className={`fixed inset-0 flex items-center justify-center 
               bg-neutral/40 backdrop-blur-sm z-40 
                 transition-opacity duration-300 ease-out
-                ${show ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-                onClick={() => setShow(false)}>
-
+                ${show ? "opacity-100" : "opacity-0 pointer-events-none"}`} >
 
                 <div
                     className={`relative flex flex-col gap-3
                         bg-neutral border border-gray 
                         rounded-2xl  p-8  w-sm text-center  
                         transform transition-all duration-300 ease-out
-                        ${show ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-4 opacity-0"}`}
-                    onClick={(e) => e.stopPropagation()}>
+                        ${show ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-4 opacity-0"}`}>
 
                     {/* Close Button */}
                     <button
@@ -81,7 +76,7 @@ export default function CodeVerification({ show, setShow }) {
 
 
                     <p className="text-sm">
-                        Please enter the OTP sent to your email 
+                        Please enter the OTP sent to your email:
                         <span className="text-yellow font-semibold ">usmanjamil@gmail.com</span>
                     </p>
 
@@ -108,7 +103,7 @@ export default function CodeVerification({ show, setShow }) {
                     </div>
 
                     <div className="text-sm">
-                        Didnt receive OTP? 
+                        Didnt receive OTP?
                         <button
                             onClick={handleResend}
                             className="text-red font-medium hover:underline">
@@ -119,7 +114,7 @@ export default function CodeVerification({ show, setShow }) {
                     <button
                         onClick={handleVerify}
                         className="w-full px-1 py-2 bg-red-500
-                        font-bold text-lg uppercase rounded">
+                        font-bold text-lg uppercase rounded cursor-pointer">
                         verify
                     </button>
 

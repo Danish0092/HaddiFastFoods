@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import { Poppins, Inter } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
-import Overlay from "./Overlay";   
-import Item from "./Item";         
+import Item from "./Item";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -19,7 +18,7 @@ const inter = Inter({
 const Menu = () => {
   const [active, setActive] = useState("home");
   const navRef = useRef(null);
-  const [selectedProduct, setSelectedProduct] = useState(null); 
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -67,7 +66,7 @@ const Menu = () => {
   const ProductCard = ({ product }) => (
     <div
       className="bg-neutral-800 relative rounded-md shadow-md cursor-pointer"
-      onClick={() => setSelectedProduct(product)} 
+      onClick={() => setSelectedProduct(product)}
     >
       <div className="aspect-square rounded-t-md overflow-hidden relative">
         <Image
@@ -150,10 +149,6 @@ const Menu = () => {
         </section>
       ))}
 
-      <Overlay
-        isOpen={!!selectedProduct}
-        onClick={() => setSelectedProduct(null)}
-      />
       {selectedProduct && (
         <Item
           product={selectedProduct}

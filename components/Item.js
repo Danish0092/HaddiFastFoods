@@ -2,128 +2,108 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-export default function Item({ product, onClose }) {
-  const [drink, setDrink] = useState("Mirinda");
-  const [qty, setQty] = useState(1);
+export default function Item({ show, product, onClose }) {
+  console.log(product);
+
+  const [selected, setSelected] = useState([]);
+
   const drinks = ["Mirinda", "Dew", "Pepsi", "7up"];
 
-  const dec = () => setQty((q) => Math.max(1, q - 1));
-  const inc = () => setQty((q) => q + 1);
+  const toggleSelect = (drink) => {
+    setSelected((prev) =>
+      prev.includes(drink)
+        ? prev.filter((d) => d !== drink)
+        : [...prev, drink]
+    );
+  };
 
-  if (!product) return null;
 
   return (
-    <main className="fixed inset-0 z-50 grid place-items-center p-4 sm:p-6 md:p-8">
+
+
+    <div
+      className={`fixed inset-0 flex items-center justify-center 
+              bg-neutral/40  z-40 backdrop-blur-xs 
+                transition-opacity duration-300 ease-out
+        ${show ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+
+
       <section
-        aria-label="Product details"
-        className="relative w-full max-w-5xl bg-neutral-900 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg"
-      >
+        className={`relative bg-gray sm:w-2/3 w-full p-4 rounded-sm
+                         
+                        transform transition-all duration-300 ease-out
+                        ${show ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-4 opacity-0"}`}>
+
         <button
           onClick={onClose}
-          className="absolute z-50 top-0.5 right-0.5 text-yellow-500 text-2xl sm:text-3xl hover:text-red-500 focus:outline-none"
-          aria-label="Close"
-        >
-          ×
+          className="absolute  flex items-center justify-center top-4 right-4 
+                        w-8 h-8 bg-transparent hover:bg-red 
+                        rounded-full border-2 border-red transition-colors cursor-pointer">
+
+          <i className="ri-close-line text-2xl font-medium"></i>
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 items-center">
-          <div className="w-full">
-            <div className="relative w-full aspect-[4/3] md:aspect-[5/4] overflow-hidden rounded-lg">
-              <Image
-                src={product.image}
-                alt={product.title}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
+        {
+          product &&
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center  gap-6  items-center">
 
-          <div className="w-full space-y-4">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-neutral-200">
-              {product.title}
-            </h1>
+            <Image
 
-            <p className="text-neutral-300 text-base sm:text-lg">
-              {product.description}
-            </p>
+              src={product.image}
+              alt={product.title}
+              width={300}
+              height={300}
+              className="object-cover rounded-xl"
+              priority
+            />
 
-            <p className="text-xl sm:text-2xl font-bold text-neutral-200">
-              Rs. {product.price}
-            </p>
 
-            <legend className="sr-only">Choose a drink</legend>
-            <fieldset className="mt-6">
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                {drinks.map((d) => {
-                  const checked = drink === d;
-                  return (
-                    <label
-                      key={d}
-                      className="inline-flex items-center gap-2 cursor-pointer select-none"
-                    >
-                      <span
-                        className={`grid place-items-center h-5 w-5 rounded-full border-2 transition-colors ${
-                          checked ? "border-yellow-500" : "border-neutral-600"
-                        }`}
-                        aria-hidden
-                      >
-                        <span
-                          className={`h-2.5 w-2.5 rounded-full transition-colors ${
-                            checked ? "bg-yellow-500" : "bg-neutral-900"
-                          }`}
-                        />
-                      </span>
+            <div className="flex flex-col gap-4 items-center justify-center">
+              <h1 className="text-3xl font-bold text-yellow">{product.title}</h1>
 
-                      <input
-                        type="radio"
-                        name="drink"
-                        value={d}
-                        checked={checked}
-                        onChange={() => setDrink(d)}
-                        className="sr-only"
-                      />
-                      <span className="text-base sm:text-lg text-neutral-200">
-                        {d}
-                      </span>
-                    </label>
-                  );
-                })}
+              <p className="text-center">{product.description}</p>
+              <p className="text-2xl font-bold">Rs. {product.price}</p>
+
+              <div className="flex gap-x-6 text-center justify-around flex-wrap ">
+                {drinks.map((drink) => (
+                  <label
+                    key={drink}
+                    className="flex items-center  gap-2 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selected.includes(drink)}
+                      onChange={() => toggleSelect(drink)}
+                      className="appearance-none w-4 h-4 rounded-full border-2 border-gray-500 
+                  checked:bg-yellow-400
+                    transition-all duration-200 cursor-pointer"
+                    />
+                    <span className="text-lg text-white transition-colors duration-200">
+                      {drink}
+                    </span>
+                  </label>
+                ))}
               </div>
-            </fieldset>
 
-            <div className="mt-6 sm:mt-8">
-              <p className="text-lg sm:text-xl font-extrabold text-neutral-200">
-                Quantity
-              </p>
 
-              <div className="mt-3 flex items-center gap-3">
-                <button
-                  onClick={dec}
-                  className="h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-md bg-yellow-500 text-neutral-900 text-xl hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-500 active:scale-95 transition"
-                >
-                  –
+              <div className="flex gap-2 text-2xl">
+                <button className="bg-yellow rounded-sm px-1">
+                  <i className="ri-subtract-line text-neutral"></i>
                 </button>
-
-                <output className="min-w-[2ch] text-center text-xl font-bold text-neutral-200">
-                  {qty}
-                </output>
-
-                <button
-                  onClick={inc}
-                  className="h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-md bg-yellow-500 text-neutral-900 text-xl hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-500 active:scale-95 transition"
-                >
-                  +
+                <span className="font-bold">1</span>
+                <button className="bg-yellow rounded-sm px-1">
+                  <i className="ri-add-line text-neutral"></i>
                 </button>
               </div>
-            </div>
 
-            <button className="mt-4 inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg bg-yellow-500 text-neutral-900 font-bold hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-500 active:scale-95 transition">
-              Add to Cart
-            </button>
+              <button className="bg-yellow-500 w-full hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-lg shadow-md transition cursor-pointer">
+                Add to Cart
+              </button>
+
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        }
+      </section >
+    </div >
   );
 }

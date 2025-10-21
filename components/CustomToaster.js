@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 const TOAST_TYPES = {
@@ -25,13 +24,12 @@ export const showToast = (type, message) => {
           bg-white rounded-lg text-gray text-center h-16 w-xs px-4 
            transition-all duration-300 cursor-pointer overflow-hidden
 
-          ${t.visible ? "animate-toast-in" : "animate-toast-out"} 
-          ${toastType.border}`} >
+          ${t.visible ? "animate-toast-in" : "animate-toast-out"} `} >
 
         <div>{toastType.icon}</div>
         <p className=" text-sm font-medium">{message}</p>
 
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-100 overflow-hidden ">
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-100 overflow-hidden">
           <div className={`h-full ${toastType.progress} animate-progress`} ></div>
         </div>
 
@@ -47,7 +45,7 @@ const CustomToaster = () => {
 
   return (
     <>
-      <Toaster position="top-center" reverseOrder={false}
+      <Toaster position="top-center"
         containerStyle={{
           top: 8,
         }}

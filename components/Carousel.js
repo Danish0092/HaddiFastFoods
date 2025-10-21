@@ -2,43 +2,46 @@
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import Image from "next/image";
 
-import { Pagination } from "swiper/modules";
-import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
-const images = [
-  "/banners/banner1.png",
-  "/banners/banner2.png",
-  "/banners/banner3.jpg",
-  "/banners/banner4.jpg",
+const banners = [
+  "/banners/grand-opening.png",
+  "/banners/order-now.png",
+  "/banners/burger-discount.png",
+  "/banners/pizza-discount.png",
 ];
 
 const Carousel = () => {
   return (
-    <div className="bg-neutral-900 mt-10 py-2 sm:py-10 sm:h-[90vh]">
+    <div className="bg-gray mt-20 h-40 sm:h-[calc(100vh-80px)]">
       <Swiper
-        modules={[Pagination, Autoplay]}
+        modules={[Pagination, Autoplay, Navigation]}
         spaceBetween={0}
         slidesPerView={1}
         pagination={{ clickable: true }}
+        navigation={true}
         autoplay={{ delay: 5000 }}
         loop={true}
-        className="w-full h-40  sm:h-11/12"
-      >
-        {images.map((src, i) => (
-          <SwiperSlide key={i}>
+        className="w-full h-full">
+
+        {banners.map((src, i) => (
+
+          <SwiperSlide key={i} 
+          className="w-full h-full">
             <Image
-              fill
               src={src}
               alt={`banner-${i}`}
-              className="w-full h-full object-cover"
-            />
+              fill
+              className="object-contain"/>
           </SwiperSlide>
+          
         ))}
+
       </Swiper>
     </div>
   );

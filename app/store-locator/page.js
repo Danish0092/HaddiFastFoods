@@ -6,12 +6,13 @@ export default function StoreLocator() {
     <div className="min-h-screen mt-10 md:mt-0 bg-gray flex flex-col items-center justify-center py-10 px-4">
       {/* MAIN GRID SECTION */}
       <div className="w-full bg-neutral p-4 rounded-2xl max-w-6xl grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-        
+
+
         {/* MAP SECTION */}
         <div className="bg-white shadow-lg rounded-2xl overflow-hidden">
           <iframe
             title="Store Location"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2407.7231891489328!2d74.2124123!3d31.4031438!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3918ffd0bc7c5f71%3A0x879e9b82857bcd94!2sCOMSATS%20University!5e1!3m2!1sen!2s!4v1760696222776!5m2!1sen!2s"
+            src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d150.75356794059923!2d74.20902194121186!3d31.407042812655753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d31.4078801!2d74.2090034!4m3!3m2!1d31.4070142!2d74.2091895!5e1!3m2!1sen!2s!4v1760984222729!5m2!1sen!2s"
             width="100%"
             height="100%"
             allowFullScreen
@@ -41,9 +42,9 @@ export default function StoreLocator() {
 
           <button
             onClick={() =>
-              window.open("https://maps.app.goo.gl/YbASDcbAsLu4HmFj7", "_blank")
+              window.open("https://maps.app.goo.gl/rXNTtFLTgv2CjC148", "_blank")
             }
-            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-lg shadow-md transition"
+            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-lg shadow-md transition cursor-pointer"
           >
             Get Directions
           </button>

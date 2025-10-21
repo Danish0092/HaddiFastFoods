@@ -16,17 +16,17 @@ const Footer = () => {
                     </h2>
 
 
-                    <div className="flex gap-2">
-                        <span className="flex items-center justify-center 
-                        bg-white hover:bg-[#3c5a99] rounded-full w-8 h-8 cursor-pointer">
-                            <i className="ri-facebook-fill text-black hover:text-white"></i>
-                        </span>
 
-                        <span className="flex items-center justify-center 
-                    bg-white hover:bg-[#d53474] rounded-full w-8 h-8 cursor-pointer">
-                            <i className="ri-instagram-fill text-black hover:text-white"></i>
-                        </span>
-                    </div>
+                    <Link
+                        href="https://youtube.com/@haadifoodpizza"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center text-black hover:text-white 
+                        bg-white hover:bg-red rounded-full w-8 h-8 cursor-pointer">
+                        <i className="ri-youtube-fill"></i>
+                    </Link>
+
+
 
 
                 </div>
@@ -41,14 +41,14 @@ const Footer = () => {
                     <span className="font-bold text-xl">Contact Info</span>
                     <div className="flex gap-2">
                         <i className="ri-map-pin-2-line text-xl"></i>
-                        <span className="font-baloo hover:text-yellow text-lg text-center w-40">Defence Road LDA Ave</span>
+                        <span className="font-baloo hover:text-yellow text-lg text-center w-40">Block J Lda Avenue</span>
                     </div>
 
 
 
                     <div className="flex gap-2 items-center justify-center">
                         <i className="ri-phone-line text-xl"></i>
-                        <span className="font-baloo hover:text-yellow text-lg">+923 259726009</span>
+                        <span className="font-baloo hover:text-yellow text-lg">03259726009</span>
                     </div>
 
                 </div>

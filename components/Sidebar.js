@@ -8,13 +8,13 @@ const Sidebar = ({ show, setShow }) => {
     <div
       className={`fixed z-40 inset-0 bg-black/40 
       transition-opacity duration-300  
-      ${show ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-    >
+      ${show ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+
       <div
         className={`fixed left-0 top-0 
         flex flex-col gap-4 w-3/4 sm:w-1/4 h-full py-6 px-3
        bg-neutral transform transition-transform duration-300
-        ${show ? "-translate-x-0" : "-translate-x-full"}`}
+        ${show ? "translate-x-0" : "-translate-x-full"}`}
       >
         <i
           className="ri-arrow-left-s-line absolute top-7 right-4
@@ -31,13 +31,14 @@ const Sidebar = ({ show, setShow }) => {
             className="rounded-full"
           />
 
-          <span className="text-xl font-medium">Usman & Danish</span>
+          <span className="md:text-xl text-lg font-medium">Usman-Danish</span>
         </div>
 
         <span className="bg-gray h-0.5 my-2 mb-10"></span>
 
         <div className="flex flex-col gap-3 mt-2">
-          <Link onClick={()=>setShow(false)}
+          
+          <Link onClick={() => setShow(false)}
             href={"/store-locator"}
             className="flex items-center gap-2 p-3 w-full
             hover:bg-gray text-lg rounded-sm cursor-pointer

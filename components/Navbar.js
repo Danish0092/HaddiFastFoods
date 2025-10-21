@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,9 +26,7 @@ const Navbar = () => {
               width={100}
               height={100}
               alt="logo"
-              src="/banners/logo.png"
-              loading="lazy"
-              className="object-cover"
+              src="/logo.png"
             />
           </Link>
         </div>
