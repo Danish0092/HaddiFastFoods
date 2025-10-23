@@ -1,34 +1,50 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Poppins, Inter } from "next/font/google";
 import Link from "next/link";
-import Image from "next/image";
+import Product from "./Product";
 import Item from "./Item";
 
-
 const Menu = () => {
-  const [active, setActive] = useState("home");
-  const navRef = useRef(null);
+  const [activeSection, setActiveSection] = useState("home");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [show, setShow] = useState(false);
+  const navRef = useRef(null);
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
-
     const handleScroll = () => {
-      let scrollY = window.scrollY + 160;
-      sections.forEach((sec) => {
-        const offset = sec.offsetTop;
-        const id = sec.getAttribute("id");
-        if (scrollY >= offset) {
-          setActive(id);
+      const sections = document.querySelectorAll("section");
+      const scrollPosition = window.scrollY + 160;
+
+      for (const section of sections) {
+        const offsetTop = section.offsetTop;
+        const offsetBottom = offsetTop + section.offsetHeight;
+
+        if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+          setActiveSection(section.id);
+          break;
         }
-      });
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+
+  useEffect(() => {
+    if (navRef.current) {
+      const activeLink = navRef.current.querySelector(`#link-${activeSection}`);
+      if (activeLink) {
+        activeLink.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+      }
+    }
+  }, [activeSection]);
 
   const links = [
     { id: "deals", label: "Deals" },
@@ -42,56 +58,176 @@ const Menu = () => {
     { id: "fries", label: "Fries" },
   ];
 
-  useEffect(() => {
-    if (navRef.current) {
-      const activeLink = navRef.current.querySelector(`#link-${active}`);
-      if (activeLink) {
-        activeLink.scrollIntoView({
-          behavior: "smooth",
-          inline: "center",
-          block: "nearest",
-        });
-      }
-    }
-  }, [active]);
+  const productsData = {
+    deals: [
+      {
+        title: "Family Deal",
+        description: "2 Large Pizzas + 1.5L Drink + Garlic Bread",
+        price: 2999,
+        image: "/deals/burgers/crispy.png",
+      },
+      {
+        title: "Friends Deal",
+        description: "2 Regular Pizzas + 2 Drinks",
+        price: 1899,
+        image: "/deals/burgers/crispyMonster.png",
+      },
+      {
+        title: "Mega Feast",
+        description: "1 Large Pizza + 1 Burger + Fries + Drink",
+        price: 1599,
+        image: "/deals/burgers/jumboPatty.png",
+      },
+      {
+        title: "Lunch Special",
+        description: "1 Burger + Fries + Drink",
+        price: 699,
+        image: "/deals/burgers/shamiDeal.png",
+      },
+      {
+        title: "Lunch Special",
+        description: "1 Burger + Fries + Drink",
+        price: 699,
+        image: "/deals/burgers/tower.png",
+      },
+    ],
+    burgers: [
+      {
+        title: "Jumbo Crispy",
+        description: "Juicy beef patty with cheese, lettuce, tomato & sauce",
+        price: 370,
+        image: "/burgers/crispy.png",
+      },
+      {
+        title: "Crispy Monster",
+        description: "Juicy beef patty with cheese, lettuce, tomato & sauce",
+        price: 539,
+        image: "/burgers/crispyMonster.png",
+      },
+      {
+        title: "Jumbo Patty",
+        description:
+          "Double cheese layers with grilled chicken & signature sauce",
+        price: 349,
+        image: "/burgers/jumboPatty.png",
+      },
+      {
+        title: "Shami",
+        description:
+          "Beef patty, BBQ sauce, caramelized onions, cheddar cheese",
+        price: 150,
+        image: "/burgers/shami.png",
+      },
+      {
+        title: "Tower",
+        description:
+          "Beef patty, BBQ sauce, caramelized onions, cheddar cheese",
+        price: 520,
+        image: "/burgers/tower.png",
+      },
+    ],
 
-  const ProductCard = ({ product }) => (
-    <div
-      className="bg-neutral-800 relative rounded-md shadow-md cursor-pointer"
-      onClick={() => setSelectedProduct(product)}
-    >
-      <div className="aspect-square rounded-t-md overflow-hidden relative">
-        <Image
-          fill
-          src={product.image}
-          alt={product.title}
-          loading="lazy"
-          className="object-cover"
-        />
-      </div>
-      <div className="sm:pb-8 pb-5 pt-2 sm:px-4 px-2">
-        <p className="text-yellow-500 font-poppins text-lg sm:text-2xl font-bold">
-          {product.title}
-        </p>
-        <p className="text-sm text-white font-poppins mt-1 line-clamp-3 sm:line-clamp-2">
-          {product.description}
-        </p>
-        <p className="sm:text-3xl text-2xl font-poppins font-bold text-yellow-500">
-          Rs. {product.price}
-        </p>
-      </div>
-      <button className="absolute left-1/2 flex w-4/5 sm:w-3/4 items-center justify-center font-bold font-poppins -bottom-4 -translate-x-1/2 bg-red-500 text-white hover:text-red-500 hover:bg-white gap-1 px-1 py-2 rounded transition duration-500 hover:outline hover:outline-1 outline-red-500 cursor-pointer">
-        <span className="text-sm">ADD TO CART</span>
-      </button>
-    </div>
-  );
+    pizza: [
+      {
+        title: "Fajita",
+        description: "Juicy beef patty with cheese, lettuce, tomato & sauce",
+        price: 370,
+        image: "/pizza/fajita.png",
+      },
+      {
+        title: "Cheese Lover",
+        description: "Juicy beef patty with cheese, lettuce, tomato & sauce",
+        price: 539,
+        image: "/pizza/cheeseLover.png",
+      },
+      {
+        title: "Jumbo Patty",
+        description:
+          "Double cheese layers with grilled chicken & signature sauce",
+        price: 349,
+        image: "/pizza/malaiBoti.png",
+      },
+      {
+        title: "Shami",
+        description:
+          "Beef patty, BBQ sauce, caramelized onions, cheddar cheese",
+        price: 150,
+        image: "/pizza/periPeri.png",
+      },
+      {
+        title: "Tower",
+        description:
+          "Beef patty, BBQ sauce, caramelized onions, cheddar cheese",
+        price: 520,
+        image: "/pizza/seekhKabab.png",
+      },
+      {
+        title: "Tower",
+        description:
+          "Beef patty, BBQ sauce, caramelized onions, cheddar cheese",
+        price: 520,
+        image: "/pizza/tikka.png",
+      },
+      {
+        title: "Tower",
+        description:
+          "Beef patty, BBQ sauce, caramelized onions, cheddar cheese",
+        price: 520,
+        image: "/pizza/veggieLover.png",
+      },
+    ],
+
+    wings: [
+      {
+        title: "Jumbo Crispy",
+        description: "Juicy beef patty with cheese, lettuce, tomato & sauce",
+        price: 370,
+        image: "/wings/bbqSauce.png",
+      },
+      {
+        title: "Crispy Monster",
+        description: "Juicy beef patty with cheese, lettuce, tomato & sauce",
+        price: 539,
+        image: "/wings/crispyHot.png",
+      },
+      {
+        title: "Jumbo Patty",
+        description:
+          "Double cheese layers with grilled chicken & signature sauce",
+        price: 349,
+        image: "/wings/ovenBaked.png",
+      },
+      {
+        title: "Shami",
+        description:
+          "Beef patty, BBQ sauce, caramelized onions, cheddar cheese",
+        price: 150,
+        image: "/wings/periPeri.png",
+      },
+    ],
+
+    fries: [
+      {
+        title: "Jumbo Crispy",
+        description: "Juicy beef patty with cheese, lettuce, tomato & sauce",
+        price: 370,
+        image: "/fries/regular.png",
+      },
+      {
+        title: "Crispy Monster",
+        description: "Juicy beef patty with cheese, lettuce, tomato & sauce",
+        price: 539,
+        image: "/fries/loaded.png",
+      },
+      
+    ],
+  };
 
   return (
     <div>
       <nav
         ref={navRef}
-        className="sticky top-20 z-10 flex px-4 sm:px-16 bg-neutral-900 h-20"
-      >
+        className="sticky top-20 z-10 flex px-4 sm:px-16 bg-neutral-900 h-20">
         <div className="flex gap-8 items-center overflow-x-auto scrollbar-hide">
           {links.map((link) => (
             <Link
@@ -99,14 +235,15 @@ const Menu = () => {
               key={link.id}
               href={`#${link.id}`}
               className={`relative transition-colors duration-300 hover:text-yellow-500 text-lg sm:text-2xl font-bold font-poppins whitespace-nowrap
-              ${active === link.id ? "text-yellow-500" : "text-white"}`}
+              ${activeSection === link.id ? "text-yellow-500" : "text-white"
+                }`}
             >
               {link.label}
-              {active === link.id && (
+              {activeSection === link.id && (
                 <motion.div
                   layoutId="underline"
                   className="absolute left-0 -bottom-1 bg-yellow-500 rounded-md w-full h-0.5"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 />
               )}
             </Link>
@@ -114,39 +251,50 @@ const Menu = () => {
         </div>
       </nav>
 
-      {links.map((section) => (
-        <section
-          key={section.id}
-          id={section.id}
-          className="bg-neutral-950 p-4 sm:p-20 scroll-mt-40"
-        >
-          <span className="text-white font-bold font-poppins mb-6 text-3xl block">
-            {section.label}
-          </span>
+      {links.map((section) => {
+        const products = productsData[section.id];
 
-          <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-3 gap-y-8 sm:gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <ProductCard
-                key={i}
-                product={{
-                  title: `${section.label} Item ${i}`,
-                  description:
-                    "Crispy Sides Crust: Creamy Sauce, Extra Cheesy, Chicken Tikka, Fajita Mix, Black Olives, Sausages, and Vegetables.",
-                  price: 999 + i * 100,
-                  image: "/banners/burger.png",
-                }}
-              />
-            ))}
-          </div>
-        </section>
-      ))}
+        return (
+          <section
+            key={section.id}
+            id={section.id}
+            className="bg-neutral-950 pb-20 px-2 sm:px-10 scroll-mt-40"
+          >
+            <span className="text-white font-bold font-poppins mb-6 text-3xl block">
+              {section.label}
+            </span>
 
-      {selectedProduct && (
-        <Item
-          product={selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-        />
-      )}
+            {products && products.length > 0 ? (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-10">
+                {products.map((product, i) => (
+                  <div
+                    key={i}
+                    onClick={() => {
+                      setSelectedProduct(product);
+                      setShow(true);
+                    }}
+                  >
+                    <Product product={product} />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-green text-lg">
+                No products available in this category yet.
+              </p>
+            )}
+          </section>
+        );
+      })}
+
+      <Item
+        show={show}
+        product={selectedProduct}
+        onClose={() => {
+          setSelectedProduct(null);
+          setShow(false);
+        }}
+      />
     </div>
   );
 };
