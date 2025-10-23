@@ -5,15 +5,7 @@ import { Poppins, Inter } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
 import Item from "./Item";
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 const Menu = () => {
   const [active, setActive] = useState("home");
@@ -141,7 +133,7 @@ const Menu = () => {
                   description:
                     "Crispy Sides Crust: Creamy Sauce, Extra Cheesy, Chicken Tikka, Fajita Mix, Black Olives, Sausages, and Vegetables.",
                   price: 999 + i * 100,
-                  image: "/banners/thincrust.png",
+                  image: "/banners/burger.png",
                 }}
               />
             ))}
