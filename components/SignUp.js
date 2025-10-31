@@ -58,28 +58,9 @@ const Signup = ({ toggleForm, show }) => {
 
           <div className="w-full flex flex-col gap-4">
 
-            {/* FullName */}
-            <div className="relative p-2 bg-gray rounded-t-md">
+           
 
-              <input
-                ref={fullNameRef}
-                type="text"
-                className="pt-6 bg-transparent outline-none peer"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)} />
-
-              <label
-                onClick={() => fullNameRef.current.focus()}
-                className={`absolute left-2 text-yellow text-lg 
-                uppercase cursor-text transition-all duration-300
-                ${fullName ? "top-1 text-sm" : "top-5 peer-focus:top-1 peer-focus:text-sm"}`}>
-                full name*
-              </label>
-
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-red peer-focus:w-full transition-all duration-300" />
-            </div>
-
-            
+     
             {/* Email */}
             <div className="relative p-2 bg-gray rounded-t-md">
               <input
