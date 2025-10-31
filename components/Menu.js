@@ -265,7 +265,7 @@ const Menu = () => {
             </span>
 
             {products && products.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-10">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
                 {products.map((product, i) => (
                   <div
                     key={i}

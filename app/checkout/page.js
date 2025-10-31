@@ -35,7 +35,7 @@ export default function CheckoutPage() {
             <CustomToaster   />
             <div className="min-h-screen bg-gray flex flex-col items-center justify-center mt-10 py-10 px-4">
                 <div className="w-full md:w-2/3 bg-neutral shadow-lg rounded-2xl p-6 sm:p-8 grid sm:grid-cols-2 gap-8">
-                    {/* LEFT: Order Summary */}
+                    {/*Order Summary */}
                     <div>
                         <h2 className="text-xl font-semibold mb-4 text-yellow text-center">
                             Order Summary
@@ -43,9 +43,9 @@ export default function CheckoutPage() {
 
                         <div className="space-y-4 max-h-72 overflow-y-auto pr-2 scrollbar-hide">
                             {[
-                                { name: "Cheese Burger", price: 599, img: "/banners/BRONCO.webp" },
-                                { name: "Zinger Roll", price: 399, img: "/banners/BRONCO.webp" },
-                                { name: "Fries with Mayo", price: 249, img: "/banners/BRONCO.webp" },
+                                { name: "Cheese Burger", price: 599, img: "/pizza/tikka.png" },
+                                { name: "Zinger Roll", price: 399, img: "/pizza/tikka.png" },
+                                { name: "Fries with Mayo", price: 249, img: "/pizza/tikka.png" },
                             ].map((item, i) => (
                                 <div
                                     key={i}

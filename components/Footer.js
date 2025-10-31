@@ -15,8 +15,6 @@ const Footer = () => {
                         <span className="text-white"> Fast Foods</span>
                     </h2>
 
-
-
                     <Link
                         href="https://youtube.com/@haadifoodpizza"
                         target="_blank"
@@ -25,8 +23,6 @@ const Footer = () => {
                         bg-white hover:bg-red rounded-full w-8 h-8 cursor-pointer">
                         <i className="ri-youtube-fill"></i>
                     </Link>
-
-
 
 
                 </div>
